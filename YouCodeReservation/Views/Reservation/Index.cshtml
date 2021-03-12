@@ -1,0 +1,63 @@
+﻿@model IEnumerable<YouCodeReservation.Models.ReservationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestingStudent.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestingStudent.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationType.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationType.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestingStudent.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestingStudent.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationType.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn-outline-primary"><i class="fa fa-file"></i>Review</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

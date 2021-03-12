@@ -10,5 +10,6 @@ namespace YouCodeReservation.Data
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Count { get; set; }
     }
 }

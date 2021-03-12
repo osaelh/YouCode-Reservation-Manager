@@ -38,8 +38,8 @@ namespace YouCodeReservation
             services.AddControllersWithViews();
 
             services.AddScoped<IReservationTypeRepository, ReservationTypeRepository>();
-          /*  services.AddScoped<IReservationRepository, ReservationRepository>();*/
-        
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

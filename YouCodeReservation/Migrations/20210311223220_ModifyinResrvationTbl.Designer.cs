@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YouCodeReservation.Data;
 
 namespace YouCodeReservation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210311223220_ModifyinResrvationTbl")]
+    partial class ModifyinResrvationTbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,7 +236,7 @@ namespace YouCodeReservation.Migrations
                     b.Property<int>("ReservationTypeId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Status")
+                    b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
@@ -278,33 +280,6 @@ namespace YouCodeReservation.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ReservationTypeViewModel");
-                });
-
-            modelBuilder.Entity("YouCodeReservation.Models.ReservationViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("RequestingStudentId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.Property<int>("ReservationTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RequestingStudentId");
-
-                    b.HasIndex("ReservationTypeId");
-
-                    b.ToTable("ReservationViewModel");
                 });
 
             modelBuilder.Entity("YouCodeReservation.Data.Student", b =>
@@ -375,23 +350,6 @@ namespace YouCodeReservation.Migrations
                 });
 
             modelBuilder.Entity("YouCodeReservation.Data.Reservation", b =>
-                {
-                    b.HasOne("YouCodeReservation.Data.Student", "RequestingStudent")
-                        .WithMany()
-                        .HasForeignKey("RequestingStudentId");
-
-                    b.HasOne("YouCodeReservation.Data.ReservationType", "ReservationType")
-                        .WithMany()
-                        .HasForeignKey("ReservationTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RequestingStudent");
-
-                    b.Navigation("ReservationType");
-                });
-
-            modelBuilder.Entity("YouCodeReservation.Models.ReservationViewModel", b =>
                 {
                     b.HasOne("YouCodeReservation.Data.Student", "RequestingStudent")
                         .WithMany()

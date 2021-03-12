@@ -6,8 +6,8 @@ using YouCodeReservation.Data;
 
 namespace YouCodeReservation.Contract
 {
-    interface IReservationRepository : IRepositoryBase<Reservation>
+   public interface IReservationRepository : IRepositoryBase<Reservation>
     {
-
+        List<Reservation> GetAbsenceAllocationsByStudent(string id);
     }
 }

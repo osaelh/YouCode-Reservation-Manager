@@ -366,3 +366,6 @@ C:\Users\Administrateur\Desktop\osa\YouCode-Reservation-Manager\YouCodeReservati
 C:\Users\Administrateur\Desktop\osa\YouCode-Reservation-Manager\YouCodeReservation\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Error.cshtml.g.cs
 C:\Users\Administrateur\Desktop\osa\YouCode-Reservation-Manager\YouCodeReservation\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Administrateur\Desktop\osa\YouCode-Reservation-Manager\YouCodeReservation\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Administrateur\Desktop\osa\YouCode-Reservation-Manager\YouCodeReservation\obj\Debug\net5.0\Razor\Views\Reservation\Index.cshtml.g.cs
+C:\Users\Administrateur\Desktop\osa\YouCode-Reservation-Manager\YouCodeReservation\obj\Debug\net5.0\Razor\Views\Reservation\Details.cshtml.g.cs
+C:\Users\Administrateur\Desktop\osa\YouCode-Reservation-Manager\YouCodeReservation\obj\Debug\net5.0\Razor\Views\Reservation\Create.cshtml.g.cs

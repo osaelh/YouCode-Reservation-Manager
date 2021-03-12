@@ -17,5 +17,6 @@ namespace YouCodeReservation.Data
         public DbSet<ReservationType> ReservationTypes { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<YouCodeReservation.Models.ReservationTypeViewModel> ReservationTypeViewModel { get; set; }
+        public DbSet<YouCodeReservation.Models.ReservationViewModel> ReservationViewModel { get; set; }
     }
 }
