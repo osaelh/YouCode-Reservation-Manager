@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using YouCodeReservation.Models;
 
 namespace YouCodeReservation.Controllers
 {
+    [Authorize]
     public class ReservationController : Controller
     {
         private readonly IReservationRepository _reservationRepo;
@@ -24,9 +26,10 @@ namespace YouCodeReservation.Controllers
             _userManager = userManager;
         }
         // GET: ReservationController
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
-            var Reservations = _reservationRepo.GetAll();
+            var Reservations = _reservationRepo.GetAll().OrderBy(x=>x.RequestingStudent.Count);
             var model = Reservations.Select(a => new ReservationViewModel() { Id = a.Id, Date=a.Date,RequestingStudent=a.RequestingStudent,RequestingStudentId=a.RequestingStudentId,ReservationType=a.ReservationType,ReservationTypeId=a.ReservationTypeId,Status=a.Status }).ToList();
             /*  var model = new AdminAbsenceRequestViewModel
               {
@@ -39,6 +42,7 @@ namespace YouCodeReservation.Controllers
               };*/
             return View(model);
         }
+        [Authorize(Roles = "Administrator")]
 
         // GET: ReservationController/Details/5
         public ActionResult Details(int id)
@@ -56,6 +60,7 @@ namespace YouCodeReservation.Controllers
             };
             return View(model);
         }
+        [Authorize(Roles = "Administrator")]
 
         public ActionResult ApprouveRequest(int id)
         {
@@ -75,7 +80,7 @@ namespace YouCodeReservation.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult RejectRequest(int id)
         {
             try
@@ -155,13 +160,23 @@ namespace YouCodeReservation.Controllers
                     ModelState.AddModelError("", "Something went wrong in the submit action");
                     return View(model);
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(StudentReservations));
             }
             catch (Exception ex)
             {
                 return View();
             }
         }
+        public ActionResult StudentReservations()
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+
+            var Reservations = _reservationRepo.GetReservationsByStudent(user.Id);
+            var model = Reservations.Select(a => new ReservationViewModel() { Id = a.Id, Date = a.Date, RequestingStudent = a.RequestingStudent, RequestingStudentId = a.RequestingStudentId, ReservationType = a.ReservationType, ReservationTypeId = a.ReservationTypeId, Status = a.Status }).ToList();
+            return View(model);
+        }
+
+
 
         // GET: ReservationController/Edit/5
         public ActionResult Edit(int id)
@@ -187,7 +202,16 @@ namespace YouCodeReservation.Controllers
         // GET: ReservationController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var reservation = _reservationRepo.GetById(id);
+            var isSuccuss = _reservationRepo.Delete(reservation);
+            if (!isSuccuss)
+            {
+               
+                return View();
+            }
+            return RedirectToAction(nameof(StudentReservations));
+
+            
         }
 
         // POST: ReservationController/Delete/5

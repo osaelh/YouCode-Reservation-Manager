@@ -37,7 +37,12 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-success" asp-action="ApprouveRequest" asp-route-id="@Model.Id"><i class="fa fa-check"></i>Approuve</a>
-    <a class="btn btn-danger" asp-action="RejectRequest" asp-route-id="@Model.Id"><i class="fa fa-remove"></i>Reject</a>
-    <a asp-action="Index">Back to List</a>
+    @if (Model.Status == null)
+    {
+        <a class="btn btn-success" asp-action="ApprouveRequest" asp-route-id="@Model.Id"><i class="fa fa-check"></i>Approuve</a>
+        <a class="btn btn-danger" asp-action="RejectRequest" asp-route-id="@Model.Id"><i class="fa fa-remove"></i>Reject</a>
+    }
+    <a class="btn btn-outline-dark" asp-action="Index">
+        <i class="fa fa-arrow-left"></i> Back to List
+    </a>
 </div>

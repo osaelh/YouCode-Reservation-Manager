@@ -27,7 +27,7 @@ namespace YouCodeReservation.Repository
             return Save();
         }
 
-        public List<Reservation> GetAbsenceAllocationsByStudent(string id)
+        public List<Reservation> GetReservationsByStudent(string id)
         {
             return GetAll()
                 .Where(q => q.RequestingStudentId == id).ToList();
