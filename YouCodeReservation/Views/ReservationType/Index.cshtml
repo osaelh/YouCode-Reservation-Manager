@@ -31,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.Number)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn badge-primary"> <i class="fa fa-edit" aria-hidden="true"></i>Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn badge-warning"><i class="fa fa-info-circle" aria-hidden="true"></i>Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn badge-danger"> <i class="fas fa-trash-alt"></i>Delete</a>
             </td>
         </tr>
 }

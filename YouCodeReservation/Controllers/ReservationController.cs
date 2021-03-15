@@ -29,7 +29,8 @@ namespace YouCodeReservation.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
-            var Reservations = _reservationRepo.GetAll().OrderBy(x=>x.RequestingStudent.Count);
+            var today = DateTime.Today;
+            var Reservations = _reservationRepo.GetAll().OrderBy(x => x.RequestingStudent.Count).Where(x => x.Date == today);/*.Where(x=>x.Date== today)*/
             var model = Reservations.Select(a => new ReservationViewModel() { Id = a.Id, Date=a.Date,RequestingStudent=a.RequestingStudent,RequestingStudentId=a.RequestingStudentId,ReservationType=a.ReservationType,ReservationTypeId=a.ReservationTypeId,Status=a.Status }).ToList();
             /*  var model = new AdminAbsenceRequestViewModel
               {
