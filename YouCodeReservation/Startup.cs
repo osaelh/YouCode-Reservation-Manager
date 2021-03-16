@@ -36,7 +36,10 @@ namespace YouCodeReservation
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                
+            });
 
             services.AddScoped<IReservationTypeRepository, ReservationTypeRepository>();
             services.AddScoped<IReservationRepository, ReservationRepository>();

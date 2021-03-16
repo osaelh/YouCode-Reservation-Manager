@@ -21810,26 +21810,31 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .login-page,
 .register-page {
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #e9ecef;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100vh;
-  -ms-flex-pack: center;
-  justify-content: center;
+    background-image: url(/background.jpg); /* The image used */
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    -ms-flex-align: center;
+    align-items: center;
+/*    background-color: #e9ecef;*/
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
-.login-box,
-.register-box {
-  width: 360px;
-}
+    .login-box,
+    .register-box {
+        width: 360px;
+        opacity:0.5;
+    }
 
-@media (max-width: 576px) {
-  .login-box,
-  .register-box {
+        @media (max-width: 576px) {
+            .login-box, .register-box {
     margin-top: .5rem;
     width: 90%;
   }
@@ -21857,12 +21862,18 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 .register-card-body .input-group .form-control:focus {
   box-shadow: none;
 }
-
+input[type="submit"]#Input_Email:hover {
+    opacity: 1;
+    border: 1px solid black;
+}
+#Input_Email:hover{
+    opacity:1;
+}
 .login-card-body .input-group .form-control:focus ~ .input-group-prepend .input-group-text,
 .login-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text,
 .register-card-body .input-group .form-control:focus ~ .input-group-prepend .input-group-text,
 .register-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text {
-  border-color: #80bdff;
+    border-color: #80bdff;
 }
 
 .login-card-body .input-group .form-control.is-valid:focus,
