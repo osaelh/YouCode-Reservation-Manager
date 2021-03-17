@@ -21830,7 +21830,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     .login-box,
     .register-box {
         width: 360px;
-        opacity:0.5;
+        opacity:0.9;
     }
 
         @media (max-width: 576px) {
@@ -32929,5 +32929,8 @@ a.text-muted:hover {
 .dark-mode .link-black,
 .dark-mode .link-dark {
   color: #ced4da;
+}
+#ReservationTypeId {
+    width: 100%;
 }
 /*# sourceMappingURL=adminlte.css.map */

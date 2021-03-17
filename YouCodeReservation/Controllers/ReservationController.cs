@@ -99,7 +99,7 @@ namespace YouCodeReservation.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        [Authorize(Roles = "Student")]
         // GET: ReservationController/Create
         public ActionResult Create()
         {
@@ -115,7 +115,7 @@ namespace YouCodeReservation.Controllers
             };
             return View(model);
         }
-
+        [Authorize(Roles = "Student")]
         // POST: ReservationController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -168,6 +168,7 @@ namespace YouCodeReservation.Controllers
                 return View();
             }
         }
+      /*  [Authorize(Roles = "Student")]*/
         public ActionResult StudentReservations()
         {
             var user = _userManager.GetUserAsync(User).Result;

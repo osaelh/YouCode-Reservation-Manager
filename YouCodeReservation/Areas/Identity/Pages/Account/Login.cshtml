@@ -84,10 +84,10 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <img src="~/logo.png"  style="width:15em"/>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg text-white">Sign in to start your session</p>
 
                 <form id="account" method="post">
                     <div class="input-group mb-3">
@@ -95,7 +95,7 @@
                         <input asp-for="Input.Email" type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span asp-validation-for="Input.Email" class="fas fa-envelope"></span>
+                                <span asp-validation-for="Input.Email" class="fa fa-envelope"></span>
                             </div>
                         </div>
                     </div>
@@ -137,17 +137,16 @@
                     <p class="mb-0">
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                     </p>
-                    <p>
+                   @* <p>
                         <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
+                    </p>*@
                 </div>
                 @{
                     if ((Model.ExternalLogins?.Count ?? 0) == 0)
                     {
                         <div>
                             <p class="text-blue">
-                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                for details on setting up this ASP.NET application to support logging in via external services.
+                                There are no external authentication services configured.
                             </p>
                         </div>
                     }
